@@ -14,29 +14,29 @@ angular.module('redditGridApp')
       'AngularJS',
       'Karma'
     ];
-    $scope.images = [];
-    $http.get('http://www.reddit.com/r/pugs.json?limit=75').
-    success(function(data){
-      console.log(data.data);
-      console.log('success!');
-      for(var element in data.data.children){
-        var url = data.data.children[element].data.url;
-        if(url.contains('i.imgur.com/')){
-          $scope.images.push(url);
+    $scope.loadImages = function(){
+      $scope.images = [];
+      $http.get('http://www.reddit.com/r/'+$scope.query+'.json?limit=75').
+      success(function(data){
+        for(var element in data.data.children){
+          var url = data.data.children[element].data.url;
+          if(url.contains('i.imgur.com/')){
+            $scope.images.push(url);
+          }
         }
-      }
-      $timeout(function(){
-        var container = document.querySelector('#imageContainer');
-        var msnry = new Masonry(container, {
-          imageSelector: '.imageElement',
-          columnWidth: 75,
-          isFitWidth:true
-        });
-      }, 2);
+        $timeout(function(){
+          var container = document.querySelector('#imageContainer');
+          var msnry = new Masonry(container, {
+            imageSelector: '.imageElement',
+            columnWidth: 75,
+            isFitWidth:true
+          });
+        }, 2);
 
-    }).
-    error(function(){
-      console.log('error');
-    });
-
+      }).
+      error(function(){
+        console.log('error loading images.');
+      });
+    }
+    //loadImages();
   });

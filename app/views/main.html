@@ -1,4 +1,18 @@
 <div class="row">
+  <div class="col-xs-12">
+    <form class="form-group" ng-submit="loadImages()">
+      <div class="input-group">
+        <div class="input-group-addon">/r/</div>
+        <input type="text" class="form-control" id="query" ng-model="query">
+      </div>
+      <div class="input-group">
+        <button type="submit" class="btn btn-success" style="display:none;"></button>
+      </div>
+    </form>
+  </div>
+</div>
+<br>
+<div class="row">
   <div id="imageContainer" class="js-masonry">
     <div ng-repeat="image in images" class="imageElement">
       <img ng-src="{{image}}">
