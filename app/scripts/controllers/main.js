@@ -20,7 +20,7 @@ angular.module('redditGridApp')
       success(function(data){
         for(var element in data.data.children){
           var url = data.data.children[element].data.url;
-          if(url.contains('i.imgur.com/')){
+          if(url.indexOf('i.imgur.com/') > -1){
             $scope.images.push(url);
           }
         }
@@ -28,8 +28,7 @@ angular.module('redditGridApp')
           var container = document.querySelector('#imageContainer');
           var msnry = new Masonry(container, {
             imageSelector: '.imageElement',
-            columnWidth: 75,
-            isFitWidth:true
+            isFitWidth:true,
           });
         }, 2);
 
