@@ -12,10 +12,10 @@
   </div>
 </div>
 <br>
-<div class="row">
-  <div id="imageContainer" class="js-masonry">
-    <div ng-repeat="image in images" class="imageElement">
-      <img ng-src="{{image}}">
+<div class="row imageRow">
+  <div id="images">
+    <div ng-repeat="image in images">
+      <img ng-src="{{image}}" class="image">
     </div>
   </div>
 </div>

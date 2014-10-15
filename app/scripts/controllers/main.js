@@ -25,15 +25,22 @@ angular.module('redditGridApp')
           }
         }
         $timeout(function(){
-          var container = document.querySelector('#imageContainer');
-          var msnry = new Masonry(container, {
-            imageSelector: '.imageElement',
-            isFitWidth:true,
+          console.log('timeout');
+          $('#images').justifiedGallery();
+          //jQuery event
+          $('.image').hover(function(){
+            var url = $(this).prop('src');
+            $(this).addClass('hover');
+            console.log(url);
+            //$('.imageRow').append('<img class="hover hover-image" src=\"'+url+'\">');
+          },
+          function(){
+            $('.image').removeClass('hover');
           });
         }, 2);
 
-      }).
-      error(function(){
+      })
+      .error(function(){
         console.log('error loading images.');
       });
     }

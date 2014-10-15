@@ -49,17 +49,11 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
-#imageContainer{
-  margin-left:auto;
-  margin-right:auto;
-}
-.imageElement{
-  width:30%;
-  margin-left:auto;
-  margin-right:auto;
-}
-.imageElement img{
-  width: 100%;
+.hover{
+  width:120% !important;
+  height:120% !important;
+  animation-duration: 5s !important;
+  animation-name: slide;
 }
 
 
@@ -92,26 +86,12 @@ body {
 }
 
 /* animations */
-.big-picture{
-  z-index: 2;
-  animation-duration: 2s;
-  animation-name: bigpicture;
-}
 
-@keyframes bigpicture{
+@keyframes slide{
   from{
-    left: 5;
+    margin-left: -50%;
   }
   to{
-    left:500;
-  }
-}
-
-@keyframes normalPicture{
-  from{
-
-  }
-  to{
-    width:100%;
+    margin-left: -70%;
   }
 }
