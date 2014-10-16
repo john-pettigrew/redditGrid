@@ -2,16 +2,19 @@
 
 /**
  * @ngdoc function
- * @name redditGridApp.controller:AboutCtrl
+ * @name GridApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the redditGridApp
+ * Controller of the GridApp
  */
-angular.module('redditGridApp')
+angular.module('GridApp')
   .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+    //select correct tab
+    $('.about-tab').addClass('active');
+    $('.home-tab').removeClass('active');
   });

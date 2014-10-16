@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name redditGridApp
+ * @name GridApp
  * @description
- * # redditGridApp
+ * # GridApp
  *
  * Main module of the application.
  */
 angular
-  .module('redditGridApp', [
+  .module('GridApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',

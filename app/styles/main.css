@@ -49,6 +49,9 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
+li.active a{
+  background-color: #2c71a0 !important;
+}
 .hover{
   width:120% !important;
   height:120% !important;

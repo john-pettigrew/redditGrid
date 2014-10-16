@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name redditGridApp.controller:MainCtrl
+ * @name GridApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the redditGridApp
+ * Controller of the GridApp
  */
-angular.module('redditGridApp')
+angular.module('GridApp')
   .controller('MainCtrl', function ($scope, $http, $timeout) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
@@ -20,29 +20,33 @@ angular.module('redditGridApp')
       success(function(data){
         for(var element in data.data.children){
           var url = data.data.children[element].data.url;
+          //check if the website is imgur
           if(url.indexOf('i.imgur.com/') > -1){
             $scope.images.push(url);
           }
         }
         $timeout(function(){
-          console.log('timeout');
-          $('#images').justifiedGallery();
+          //put images in a grid
+          $('#images').justifiedGallery({
+            rowHeight: 240
+          });
           //jQuery event
           $('.image').hover(function(){
             var url = $(this).prop('src');
+            //animate image
             $(this).addClass('hover');
-            console.log(url);
-            //$('.imageRow').append('<img class="hover hover-image" src=\"'+url+'\">');
           },
           function(){
+            //stop animation
             $('.image').removeClass('hover');
           });
-        }, 2);
-
+        }, 0);
       })
       .error(function(){
         console.log('error loading images.');
       });
     }
-    //loadImages();
+    //select correct tab
+    $('.about-tab').removeClass('active');
+    $('.home-tab').addClass('active');
   });
