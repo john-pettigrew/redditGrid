@@ -16,18 +16,15 @@ angular.module('GridApp')
       'Karma'
     ];
     $scope.loadImages = function(){
+      $scope.imagesLoaded = false;
       $scope.posts = [];
       $http.get('http://www.reddit.com/r/'+$scope.query+'.json?limit=75'+endName).
       success(function(data){
-        console.log(data.data.children[data.data.children.length-1].data.name);
         endName = '&after='+data.data.children[data.data.children.length-1].data.name;
-        console.log(endName);
         for(var element in data.data.children){
           var url = data.data.children[element].data.url;
           //check if the website is imgur
-          if(url.match(/imgur.com\/[a-z\d]{6}[^_]/i) !== null){
-            console.log(url.match(/imgur.com\/[a-z\d]{7}[^_]/i));
-            //console.log(data.data.children[element].data);
+          if(url.match(/imgur.com\/[a-z\d]{7}[^_]/i) !== null && data.data.children[element].data.over_18 === false){
             $scope.posts.push({url: url, link: 'http://reddit.com'+data.data.children[element].data.permalink, title: data.data.children[element].data.title});
           }
         }
@@ -36,6 +33,7 @@ angular.module('GridApp')
           $('#images').justifiedGallery({
             rowHeight: 240
           });
+          $scope.imagesLoaded = true;
           //jQuery event
           $('.image').hover(function(){
             var url = $(this).prop('src');
@@ -50,16 +48,20 @@ angular.module('GridApp')
       })
       .error(function(){
         console.log('error loading images.');
-      });
-    } // end loadImages
+      })
+    }; // end loadImages
+    $scope.resetLoadImages = function(){
+      endName = '';
+      $scope.loadImages();
+    }; // end resetLoadImages
     $scope.details = function(image){
-      console.log(image);
       $scope.modalLink = image.post.link;
       $scope.modalTitle = image.post.title;
       $scope.modalUrl = image.post.url;
       $('#imageModal').modal();
-    }
+    };
     //select correct tab
+
     $('.about-tab').removeClass('active');
     $('.home-tab').addClass('active');
   });

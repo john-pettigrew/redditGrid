@@ -95,8 +95,8 @@ li.active a{
   }
   /* Add animations on hover */
   .hover{
-    width:120% !important;
-    height:120% !important;
+    width:150% !important;
+    height:150% !important;
     animation-duration: 5s !important;
     animation-name: slide;
   }
