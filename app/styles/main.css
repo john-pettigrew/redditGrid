@@ -52,11 +52,18 @@ body {
 li.active a{
   background-color: #2c71a0 !important;
 }
-.hover{
-  width:120% !important;
-  height:120% !important;
-  animation-duration: 5s !important;
-  animation-name: slide;
+.modal-title{
+  text-align:center;
+}
+.modal-content{
+  background-color: #091541;
+}
+.modal-header{
+  color: #b5a815;
+  border-bottom: 1px solid #b5a815;
+}
+.modal-footer{
+  border-top: 1px solid #b5a815;
 }
 
 
@@ -85,6 +92,13 @@ li.active a{
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+  }
+  /* Add animations on hover */
+  .hover{
+    width:120% !important;
+    height:120% !important;
+    animation-duration: 5s !important;
+    animation-name: slide;
   }
 }
 
